@@ -3,23 +3,13 @@ from sys import argv
 circle_file_path, dot_file_path = argv[1], argv[2]
 
 with open(circle_file_path, encoding='utf-8') as circle_file:
-    data = circle_file.read()
-    crdnts, radius = data.split('\n') 
-    x = int(crdnts[0])
-    y = int(crdnts[2])
-    r = int(radius)
+    circle_coords, rad = [line.strip() for line in circle_file.readlines()]
+    circle_coords, rad = [float(i) for i in circle_coords.split()], float(rad)
 
 with open(dot_file_path, encoding='utf-8') as dot_file:
-    data = dot_file.read()
-    dots = data.split('\n')
+    dots = [[float(i) for i in line.strip().split()] for line in dot_file.readlines()]
+    dots = [[x - circle_coords[0], y - circle_coords[1]] for x, y in dots]
 
 for dot in dots:
-    x1 = int(dot[0])
-    y1 = int(dot[2])
-    if (x - x1) * (x - x1) + (y - y1) * (y - y1) == r * r:
-        print(0)
-    elif (x - x1) * (x - x1) + (y - y1) * (y - y1) < r * r:
-        print(1)
-    else:
-        print(2)
-
+    hyp = (dot[0] ** 2 + dot[1] ** 2) ** 0.5
+    print(1 if hyp < rad else 0 if hyp == rad else 2)
