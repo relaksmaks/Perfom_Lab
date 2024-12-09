@@ -1,20 +1,21 @@
 from sys import argv
+import math
 
-numbers_path = argv[1]
+file_path = argv[1]
 
-sum = 0
-count = 0
-answer = 0
+total_sum = 0
+number_count = 0
+total_deviation = 0
 
-with open(numbers_path, encoding='utf-8') as numbers:
-    data = numbers.read()
-nums = data.split('\n')
-for num in nums:
-    count += 1
-    sum += int(num)
+with open(file_path, encoding='utf-8') as file:
+    data = file.read()
+numbers = data.split('\n')
+for number in numbers:
+    number_count += 1
+    total_sum += int(number)
 
-mid = round(sum / count)
-for num in nums:
-    answer += abs(mid - int(num))
+average = round(total_sum / number_count)
+for number in numbers:
+    total_deviation += abs(average - int(number))
 
-print(answer)
+print(total_deviation)
