@@ -1,4 +1,5 @@
 def iterator(length, start):
+    length = abs(length)
     i, counter = [], start
     while len(i) < length:
         i.append(counter)
