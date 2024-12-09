@@ -1,3 +1,5 @@
+from sys import argv
+
 def iterator(length, start):
     length = abs(length)
     i, counter = [], start
@@ -6,10 +8,7 @@ def iterator(length, start):
         counter = counter + 1 if counter < length else 1
     return i
 
-print("Введите число n")
-n = int(input()) 
-print("Введите число m")
-m = int(input())
+n, m = int(argv[1]), int(argv[2])
 it, res = iterator(n, 1), [1]
 if n == m: 
     print(1)
