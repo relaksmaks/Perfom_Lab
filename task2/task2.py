@@ -7,7 +7,7 @@ with open(circle_file_path, encoding='utf-8') as circle_file:
     circle_coords, rad = [float(i) for i in circle_coords.split()], float(rad)
 
 with open(dot_file_path, encoding='utf-8') as dot_file:
-    dots = [[float(i) for i in line.strip().split()] for line in dot_file.readlines()]
+    dots = [[float(i) for i in line.strip().split(" ")] for line in dot_file.readlines()]
     dots = [[x - circle_coords[0], y - circle_coords[1]] for x, y in dots]
 
 for dot in dots:
