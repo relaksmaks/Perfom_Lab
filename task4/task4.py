@@ -14,7 +14,8 @@ for number in numbers:
     number_count += 1
     total_sum += int(number)
 
-average = round(total_sum / number_count)
+#average = round(total_sum / number_count)
+average = int(total_sum / number_count)
 for number in numbers:
     total_deviation += abs(average - int(number))
 
